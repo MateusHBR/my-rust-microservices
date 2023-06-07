@@ -24,6 +24,11 @@ Project Structure:
 The build.rs file is used to compile our ProtoBuffs into Rust code. Cargo will run this buildScript before compiling our source code.
 </br>
 
+- RUN WITH DOCKER
+```
+docker-compose up -d --build
+```
+
 - RUN
 ```
 cargo run --bin auth
