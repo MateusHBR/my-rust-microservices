@@ -11,7 +11,7 @@ RUN cargo chef prepare --recipe-path recipe.json
 FROM chef as builder
 COPY --from=planner /my-microservices/recipe.json recipe.json
 RUN cargo chef cook --release --recipe-path recipe.json
-RUN apk add --no-cache proto
+RUN apk add --no-cache protoc
 COPY . .
 RUN cargo build --release --bin auth
 

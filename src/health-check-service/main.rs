@@ -4,8 +4,7 @@ use tokio::time::sleep;
 use uuid::Uuid;
 
 use crate::authentication::{
-    auth_client::AuthClient, SignInRequest, SignInResponse, SignOutRequest, SignOutResponse,
-    SignUpRequest, SignUpResponse, StatusCode,
+    auth_client::AuthClient, SignInRequest, SignOutRequest, SignUpRequest, StatusCode,
 };
 pub mod authentication {
     tonic::include_proto!("authentication");
@@ -14,6 +13,7 @@ pub mod authentication {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let auth_hostname = env::var("AUTH_SERVICE_HOST_NAME").unwrap_or("[::0]".to_owned());
+    println!("http:://{}:50051", auth_hostname);
 
     let mut client = AuthClient::connect(format!("http:://{}:50051", auth_hostname)).await?;
     loop {
